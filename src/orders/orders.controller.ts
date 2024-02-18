@@ -15,8 +15,3 @@ export class OrdersController {
     return this.ordersService.getById(id);
   }
 }
-
-// import { Controller } from '@nestjs/common';
-
-// @Controller('orders')
-// export class OrdersController {}

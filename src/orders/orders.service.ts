@@ -8,11 +8,6 @@ export class OrdersService {
   }
 
   public getById(id: Order['id']): Order | null {
-    return db.orders.find((p) => p.id === id);
+    return db.orders.find((order) => order.id === id);
   }
 }
-
-// import { Injectable } from '@nestjs/common';
-
-// @Injectable()
-// export class OrdersService {}
