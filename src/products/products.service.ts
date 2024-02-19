@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { db, Product } from './../db';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -18,22 +18,12 @@ export class ProductsService {
     db.products.push(newProduct);
     return newProduct;
   }
-  public updateById(
-    id: Product['id'],
-    productData: Omit<Product, 'id'>,
-  ): Product {
-    let found = false;
-    const updatedProducts = db.products.map((product) => {
+  public updateById(id: Product['id'], productData: Omit<Product, 'id'>): void {
+    db.products = db.products.map((product) => {
       if (product.id === id) {
-        found = true;
         return { ...product, ...productData };
       }
       return product;
     });
-    if (!found) {
-      throw new NotFoundException(`Product with ID ${id} not found.`);
-    }
-    db.products = updatedProducts;
-    return this.getById(id);
   }
 }
