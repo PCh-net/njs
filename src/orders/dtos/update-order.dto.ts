@@ -9,7 +9,7 @@ export class UpdateOrderDTO {
 
   @IsString()
   @IsNotEmpty()
-  @Transform(({ value }) => (Array.isArray(value) ? value.join(', ') : ''))
+  @Transform(({ value }) => (Array.isArray(value) ? value.join(' ') : ''))
   client: string;
 
   @IsString()
