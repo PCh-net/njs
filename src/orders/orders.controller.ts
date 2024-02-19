@@ -41,4 +41,13 @@ export class OrdersController {
   create(@Body() orderData: CreateOrderDTO) {
     return this.ordersService.create(orderData);
   }
+
+  @Put('/:id')
+  update(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() orderData: UpdateOrderDTO,
+  ) {
+    this.ordersService.updateById(id, orderData);
+    return { success: true };
+  }
 }
