@@ -16,8 +16,8 @@ export class OrdersService {
     db.orders = db.orders.filter((order) => order.id !== id);
   }
 
-  public create(orderData: Omit<Order, 'id' | 'productId'>): Order {
-    const newOrder = { id: uuidv4(), productId: uuidv4(), ...orderData };
+  public create(orderData: Omit<Order, 'id'>): Order {
+    const newOrder = { id: uuidv4(), ...orderData };
     db.orders.push(newOrder);
     return newOrder;
   }
