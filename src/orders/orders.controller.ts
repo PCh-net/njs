@@ -47,6 +47,8 @@ export class OrdersController {
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() orderData: UpdateOrderDTO,
   ) {
+    if (!this.ordersService.getById(id))
+      throw new NotFoundException('Order not found, no edit');
     this.ordersService.updateById(id, orderData);
     return { success: true };
   }
