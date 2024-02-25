@@ -17,6 +17,11 @@ import { CreateOrderDTO } from './dtos/create-order.dto';
 export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
+  @Get('/extended')
+  getAllExtended(): any {
+    return this.ordersService.getAllExtended();
+  }
+
   @Get('/')
   getAll(): any {
     return this.ordersService.getAll();
